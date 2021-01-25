@@ -2,7 +2,7 @@
   "name": "react-event-storm",
   "version": "0.0.1",
   "description": "React wrapper for event-store library",
-  "main": "index.js",
+  "main": "./index.js",
   "scripts": {
     "bundle": "rollup -c",
     "build": "rimraf ./dist && yarn run bundle",
