@@ -26,7 +26,8 @@
     "url": "https://github.com/event-store/react-event-store/issues"
   },
   "peerDependencies": {
-    "react": ">=16.8.0"
+    "react": ">=16.8.0",
+    "event-storm": "^0.0.8"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
