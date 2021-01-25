@@ -4,7 +4,7 @@ import uglify from 'rollup-plugin-uglify-es';
 import minify from 'rollup-plugin-babel-minify';
 
 const config = {
-  input: './index.js',
+  input: './src/index.js',
   output: [
     {
       dir: 'dist',
