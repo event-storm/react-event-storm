@@ -1,4 +1,13 @@
-## 0.0.3 (2021-01-25)
+## [0.0.4](https://github.com/event-storm/react-event-storm/compare/v0.0.3...v0.0.4) (2021-01-25)
+
+
+### Bug Fixes
+
+* **dist:** remove dist coming from action release ([222e38c](https://github.com/event-storm/react-event-storm/commit/222e38cd59574075010d9c0f1ca0fb4c5b935a2e))
+
+
+
+## [0.0.3](https://github.com/event-storm/react-event-storm/compare/13e14f4b8bc14e0a81344abcb111a7a036587336...v0.0.3) (2021-01-25)
 
 
 ### Bug Fixes
