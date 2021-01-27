@@ -24,3 +24,6 @@ As the underlying concept is separating the source of truth from the application
   `useModel` will handle subscription, updates, also will unsubscribe the events on component unmount.
 
 ## Playground
+
+You can play with a live example in the [codesandbox](https://codesandbox.io/s/nameless-bash-8e2o4)
+For **VanillaJs** example [see this link](https://codesandbox.io/s/serene-wood-cjvem)
