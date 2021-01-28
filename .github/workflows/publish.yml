@@ -2,6 +2,8 @@ name: Pubilsh
 on:
   push:
     branches: [master]
+    paths:
+      - 'src/*.js'
 jobs:
   build:
     runs-on: ubuntu-latest
