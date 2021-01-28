@@ -1,4 +1,4 @@
-name: CI
+name: Pubilsh
 on:
   push:
     branches: [master]

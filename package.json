@@ -27,7 +27,7 @@
   },
   "peerDependencies": {
     "react": ">=16.8.0",
-    "event-storm": "^0.0.8"
+    "event-storm": "^0.4.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
