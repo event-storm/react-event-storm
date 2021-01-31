@@ -8,4 +8,4 @@ dist
 
 # package manager logs
 
-yarn-debug.log
+yarn-error.log

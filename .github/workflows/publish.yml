@@ -16,6 +16,10 @@ jobs:
           node-version: '12.x'
           registry-url: 'https://registry.npmjs.org'
       - run: yarn install --frozen-lockfile
+      - name: Linting
+        run: yarn run lint
+      - name: Testing
+        run: yarn run jest
       - name: Conventional Changelog Action
         id: changelog
         uses: TriPSs/conventional-changelog-action@v2
