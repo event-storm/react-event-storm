@@ -26,8 +26,8 @@
     "url": "https://github.com/event-store/react-event-store/issues"
   },
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "event-storm": "^0.4.0"
+    "event-storm": "^0.4.0",
+    "react": ">=16.8.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
@@ -37,10 +37,8 @@
     "react": ">=16.8.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.38.0",
-    "rollup-plugin-babel-minify": "^10.0.0",
     "rollup-plugin-copy": "^3.3.0",
-    "rollup-plugin-gzip": "^2.5.0",
-    "rollup-plugin-uglify-es": "^0.0.1"
+    "rollup-plugin-gzip": "^2.5.0"
   },
   "config": {
     "commitizen": {
@@ -51,5 +49,8 @@
     "hooks": {
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
+  },
+  "dependencies": {
+    "rollup-plugin-terser": "^7.0.2"
   }
 }
