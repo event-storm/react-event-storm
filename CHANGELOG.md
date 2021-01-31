@@ -1,3 +1,17 @@
+# [0.1.0](https://github.com/event-storm/react-event-storm/compare/v0.0.6...v0.1.0) (2021-01-31)
+
+
+### Bug Fixes
+
+* **types:** change types to any ([d7cf85b](https://github.com/event-storm/react-event-storm/commit/d7cf85b8e4058d16327f6ce7a794f8e4ecb56462))
+
+
+### Features
+
+* **types:** add typescript support ([bfb6cbb](https://github.com/event-storm/react-event-storm/commit/bfb6cbb9c1013c29a1526e00e454a7d528c7e843))
+
+
+
 ## [0.0.6](https://github.com/event-storm/react-event-storm/compare/v0.0.5...v0.0.6) (2021-01-28)
 
 
