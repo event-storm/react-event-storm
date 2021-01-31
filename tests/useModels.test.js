@@ -23,7 +23,7 @@ describe('useModels hook', () => {
 
   });
 
-  test('must match the pattern', () => {
+  test('model publish must update the component', () => {
     const initialState = 0;
     const finalState = 10;
     const ageModel = createModel(initialState);
@@ -42,10 +42,10 @@ describe('useModels hook', () => {
     expect(example.text()).toBe(String(finalState));;
   });
 
-  test('must match the pattern', () => {
+  test('not subscribed model must not update the component', () => {
     const initialState = 0;
-    const finalState = 10;
     const ageModel = createModel(initialState);
+    const heightModel = createModel('tall');
 
     function Example() {
       const [age] = useModels(ageModel);
@@ -55,9 +55,9 @@ describe('useModels hook', () => {
 
     expect(example.text()).toBe(String(initialState));;
 
-    publishModel(ageModel, finalState);
+    publishModel(heightModel, 'super-tall');
 
     example.setProps({});
-    expect(example.text()).toBe(String(finalState));;
+    expect(example.text()).toBe(String(initialState));;
   });
 });
