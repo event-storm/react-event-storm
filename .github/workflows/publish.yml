@@ -8,14 +8,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Cache node_modules
-        uses: actions/cache@v1
-        with:
-          path: ~/.yarn
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+      - name: Checkout to the repository
+        uses: actions/checkout@v2
       - name: Use NodeJS, check with linter and  run tests
         uses: actions/setup-node@v1
         with:
