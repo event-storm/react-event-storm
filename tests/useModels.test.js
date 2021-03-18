@@ -20,7 +20,6 @@ describe('useModels hook', () => {
     });
 
     expect(result.current[0]).toBe(finalState);
-
   });
 
   test('model publish must update the component', () => {
