@@ -1,4 +1,5 @@
 {
   "publishDirectory": "dist",
-  "sandboxes": ["vanilla", "vanilla-typescript-vanilla-ts"]
+  "packages": ["packages/event-storm"],
+  "sandboxes": ["react-new", "react-typescript-react-ts"]
 }
