@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { createModel, publishModel } from 'event-storm';
+import { createModel } from 'event-storm';
 import { renderHook, act } from '@testing-library/react-hooks';
 
 import { useModels } from '../src';
@@ -16,7 +16,7 @@ describe('useModels hook', () => {
     expect(result.current[0]).toBe(initialState);
 
     act(() => {
-      publishModel(ageModel, finalState);
+      ageModel.publish(finalState);
     });
 
     expect(result.current[0]).toBe(finalState);
@@ -35,7 +35,7 @@ describe('useModels hook', () => {
 
     expect(example.text()).toBe(String(initialState));;
 
-    publishModel(ageModel, finalState);
+    ageModel.publish(finalState);
 
     example.setProps({});
     expect(example.text()).toBe(String(finalState));;
@@ -54,7 +54,7 @@ describe('useModels hook', () => {
 
     expect(example.text()).toBe(String(initialState));;
 
-    publishModel(heightModel, 'super-tall');
+    heightModel.publish('super-tall');
 
     example.setProps({});
     expect(example.text()).toBe(String(initialState));;
