@@ -1,4 +1,4 @@
 {
   "publishDirectory": "dist",
-  "sandboxes": ["vanilla", "vanilla-typescript-vanilla-ts"]
+  "sandboxes": ["react-new", "react-typescript-react-ts"]
 }
