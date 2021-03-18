@@ -1,12 +1,7 @@
-import { useState, useEffect } from 'react';
+import useSubscribe from './useSubscribe';
 
 const useModels = (...models) => {
-  const [_, forceUpdate] = useState();
-
-  useEffect(() => {
-    const subscriptions = models.map(model => model.subscribe(() => forceUpdate([])));
-    return () => subscriptions.map(unsubscribe => unsubscribe());
-  }, []);
+  useSubscribe(models);
 
   return models.map(model => model.getState());
 }
