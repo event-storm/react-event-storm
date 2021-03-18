@@ -1,3 +1,18 @@
+# [0.2.0](https://github.com/event-storm/react-event-storm/compare/v0.1.0...v0.2.0) (2021-03-18)
+
+
+### Bug Fixes
+
+* **usestore:** proxied from wrong object ([9480fb4](https://github.com/event-storm/react-event-storm/commit/9480fb44732e2b2e1fd38756349601f6ca4d75bb))
+* **usestore:** udpate was not perfromed ([acfed4b](https://github.com/event-storm/react-event-storm/commit/acfed4bc8ecde6205eec77712a88f6e184dd9cf3))
+
+
+### Features
+
+* **usestore:** adding a hook for retreiving the store ([1bdd474](https://github.com/event-storm/react-event-storm/commit/1bdd4744f6217f7a20c310677ee3d2dca86792f7))
+
+
+
 # [0.1.0](https://github.com/event-storm/react-event-storm/compare/v0.0.6...v0.1.0) (2021-01-31)
 
 
