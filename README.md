@@ -69,5 +69,5 @@ As the underlying concept is separating the source of truth from the application
 
 Examples:
 
-- [**React**](https://codesandbox.io/s/nameless-bash-8e2o4)
+- [**React**](https://codesandbox.io/s/intelligent-http-iupz5)
 - [**VanillaJs**](https://codesandbox.io/s/serene-wood-cjvem)
