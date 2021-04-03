@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/event-storm/react-event-storm/compare/v0.2.0...v0.3.0) (2021-04-03)
+
+
+### Features
+
+* **usepublish:** adding a hook for store publisher ([14d5ad4](https://github.com/event-storm/react-event-storm/commit/14d5ad4ea41e7acf17ec6d009907dc710f70011c))
+
+
+
 # [0.2.0](https://github.com/event-storm/react-event-storm/compare/v0.1.0...v0.2.0) (2021-03-18)
 
 
