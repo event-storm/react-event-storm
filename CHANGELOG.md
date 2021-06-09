@@ -1,3 +1,12 @@
+## [0.3.1](https://github.com/event-storm/react-event-storm/compare/v0.3.0...v0.3.1) (2021-06-09)
+
+
+### Bug Fixes
+
+* **types:** usePublish, useStore types correction ([0b5c378](https://github.com/event-storm/react-event-storm/commit/0b5c378b1888a82eb42e00d8b648320c8ad90999))
+
+
+
 # [0.3.0](https://github.com/event-storm/react-event-storm/compare/v0.2.0...v0.3.0) (2021-04-03)
 
 
