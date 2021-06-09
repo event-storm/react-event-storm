@@ -1,9 +1,7 @@
-import { IModel } from 'event-storm';
+import { IModel, IStore } from 'event-storm';
 
 export function useModels(...models: IModel<any>[]): any[];
 
-interface IStore {
-  [key: string]: IModel<any> | IStore;
-}
+export function useStore(store: IStore): object;
 
-export function useStore(store: IStore) => ([key: string]: any);
+export function usePublish(store: IStore): IStore['publish'];
