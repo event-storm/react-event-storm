@@ -1,3 +1,12 @@
+## [0.3.2](https://github.com/event-storm/react-event-storm/compare/v0.3.1...v0.3.2) (2021-06-17)
+
+
+### Bug Fixes
+
+* **types:** add generic for IStore ([5daf8ed](https://github.com/event-storm/react-event-storm/commit/5daf8edf44747cba44f2c7e66ec15a449d68765d))
+
+
+
 ## [0.3.1](https://github.com/event-storm/react-event-storm/compare/v0.3.0...v0.3.1) (2021-06-09)
 
 
