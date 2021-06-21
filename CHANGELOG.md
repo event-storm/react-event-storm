@@ -1,3 +1,12 @@
+# [0.4.0](https://github.com/event-storm/react-event-storm/compare/v0.3.2...v0.4.0) (2021-06-21)
+
+
+### Features
+
+* **types:** imrpove typescript support ([e585f79](https://github.com/event-storm/react-event-storm/commit/e585f79317e5a6a9a4b4b1d918146c882881afb9))
+
+
+
 ## [0.3.2](https://github.com/event-storm/react-event-storm/compare/v0.3.1...v0.3.2) (2021-06-17)
 
 
