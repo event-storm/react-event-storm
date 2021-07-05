@@ -1,25 +1,22 @@
-import { useMemo, useRef } from 'react';
+import { useMemo, useRef, useEffect } from 'react';
 
 import { createProxy } from './utils';
-import useSubscribe from './useSubscribe';
+import useForceUpdate from './useForceUpdate';
 
 const useStore = store => {
-  const modelRefs = useRef([]);
+  const modelRefs = useRef({});
+  const forceUpdate = useForceUpdate();
+
   const proxy = useMemo(() => createProxy(store.models, {
     getter: key => {
-      !modelRefs.current.includes(key) && modelRefs.current.push(key);
+      if (!modelRefs.current[key]) {
+        modelRefs.current[key] = store.models[key].subscribe(forceUpdate);
+      }
       return store.models[key].getState();
     },
   }), [store]);
 
-  const models = useMemo(
-    () => Object.keys(store.models)
-      .filter(key => modelRefs.current.includes(key))
-      .map(key => store.models[key]),
-    [...modelRefs.current, store.models],
-  );
-
-  useSubscribe(models);
+  useEffect(() => () => Object.values(modelRefs.current).forEach(subscription => subscription()), []);
 
   return proxy;
 }
