@@ -6,7 +6,7 @@ const useSubscribe = models => {
   useEffect(() => {
     const subscriptions = models.map(model => model.subscribe(() => forceUpdate([])));
     return () => subscriptions.map(unsubscribe => unsubscribe());
-  }, []);
+  }, models);
 }
 
 export default useSubscribe;
