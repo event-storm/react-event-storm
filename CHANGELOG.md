@@ -1,3 +1,22 @@
+# [1.0.0](https://github.com/event-storm/react-event-storm/compare/v0.4.0...v1.0.0) (2021-07-05)
+
+
+### Bug Fixes
+
+* **types:** fix usePublish types ([9845526](https://github.com/event-storm/react-event-storm/commit/98455260f1db5002b413c8f723f109879d95094d))
+
+
+### Features
+
+* **store segment subscription:** each listener must subcribe individually to a segment ([dcb21cc](https://github.com/event-storm/react-event-storm/commit/dcb21cc67249ba195528a3031a2147de9cd819ba))
+
+
+### BREAKING CHANGES
+
+* **store segment subscription:** The store will update only for used models change
+
+
+
 # [0.4.0](https://github.com/event-storm/react-event-storm/compare/v0.3.2...v0.4.0) (2021-06-21)
 
 
