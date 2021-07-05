@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 
 import { createProxy } from './utils';
 import useSubscribe from './useSubscribe';

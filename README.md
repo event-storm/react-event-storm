@@ -1,9 +1,6 @@
 # React event store
 
 A small React wrapper for [in memory event store](https://github.com/event-storm/event-storm/blob/master/README.md). The provided API is with hooks.
-The solution can be used for React applications, and for hybrid applications where the UI is not only rendered via React.
-As the underlying concept is separating the source of truth from the application UI renderer,
-**this can be used with any kind of application arround one single peace of information(model)**.
 
 ## Technical stack
 
@@ -12,58 +9,125 @@ As the underlying concept is separating the source of truth from the application
 
 ## API
 
-- useModel
-  React wrapper provides a simple hook that wraps the `subscribe` method of the given models.
-  **It will automatically subscribe the component to model changes**.
-
-  Example:
+- Subscribing to store updates
+  **useStore**
+  React wrapper provides a simple hook that wraps the store's `subscribe` method.
+  **It will automatically unsubscribe the component from the store changes on unmount**.
 
   ```js
-  // models.js
-  export const userModel = createModel({ name: 'John Doe' });
+  import { createStore } from 'event-storm';
+  import { useStore } from 'react-event-storm';
 
-  // component.js
-  import { createModel } from 'event-storm';
-  import { useModels } from 'react-event-storm';
-
-  import { userModel } from './models';
+  const store = createStore({
+    taxes: 20,
+    grossSalary: 100_000,
+  });
 
   function AnyComponent() {
-    const [user] = useModels(userModel);
+    const { taxes } = useStore(store);
 
     return (
-      <div>{user.name}</div>
-    )
+      <div>{taxes}</div>
+    );
   }
   ```
 
-  **It can receive multiple arguments**.
-  Example:
+  NOT RECOMMENDED: Do not use store as an argument to hooks dependency
 
   ```js
-  // models.js
-  export const userModel = createModel({ name: 'John Doe' });
-  export const ageModel = createModel('unknown');
 
-  // component.js
-  import { createModel } from 'event-storm';
-  import { useModels } from 'react-event-storm';
+  import { createStore } from 'event-storm';
+  import { useStore } from 'react-event-storm';
 
-  import { userModel, ageModel } from './models';
+  const store = createStore({
+    taxes: 20,
+    grossSalary: 100_000,
+  });
 
   function AnyComponent() {
-    const [user, age] = useModels(userModel, ageModel);
+    const { taxes } = useStore(store);
+
+    /* The following way of using the store is not recommended. Each render will update this effect.
+      useEffect(() => {
+        console.log(store.taxes);
+      }, [store]);
+    */
+
+   // correct usage
+    useEffect(() => {
+      console.log(taxes);
+    }, [taxes]);
 
     return (
-      <>
-        <div>{user.name}</div>
-        <span>{age}</age>
-      </>
-    )
+      <div>{taxes}</div>
+    );
+  }
+  ```
+- Updating the store
+  **usePublish**
+   ```js
+  import { createStore } from 'event-storm';
+  import { useStore, usePublish } from 'react-event-storm';
+
+  const store = createStore({
+    taxes: 20,
+    grossSalary: 100_000,
+  });
+
+  function AnyComponent() {
+    const { taxes } = useStore(store);
+    const publish = usePublish(store);
+
+    return (
+      <div onClick={() => publish({ taxes: 30 })}>
+        {taxes}
+      </div>
+    );
   }
   ```
 
-  **NOTE: `useModel` will automatically unsubscribe from models on component unmount.**
+  Advan
+- Advanced usage
+  You can also subscribe to exact models you want to
+  ```js
+  import { createModel } from 'event-storm';
+  import { useModels } from 'react-event-storm';
+
+  const isPopupVisible = createModel(true);
+  const age = createModel(1);
+
+  function AnyComponent() {
+    const [popupVisible, ageValue] = useModels(isPopupVisible, age);
+    return (
+      <div>
+        {isPopupVisible ? 'close' : 'open'}
+        {age}
+      </div>
+    );
+  }
+  ```
+
+## Usefull tips
+
+The provided hooks will work for any store instance. Some boilerplate for wrapping it with a store instance
+to avoid importing store everywhere:
+```js
+import { useStore as useBaseStore, usePublish as useBasePublish } from 'react-event-storm';
+import { createStore } from 'event-storm';
+
+const defaultState = {
+  posts: [],
+  user: null,
+  comments: [],
+  isLoggedIn: ({ user }) => !!user,
+};
+
+const store = createStore(defaultState);
+
+export const useStore = () => useBaseStore(store);
+export const usePublish = () => useBasePublish(store);
+export default store;
+```
 
 ## Playground
 
