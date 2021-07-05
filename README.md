@@ -8,7 +8,6 @@ A small React wrapper for [in memory event store](https://github.com/event-storm
 ## Technical stack
 
 - React ^16.8.0(hooks support)
-- event-storm ^0.0.8(peer dependency)
 
 ## API
 
