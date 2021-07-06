@@ -33,7 +33,7 @@ A small React wrapper for [in memory event store](https://github.com/event-storm
   }
   ```
 
-  NOT RECOMMENDED: Do not use store as an argument to hooks dependency.
+  NOT RECOMMENDED: Do not use the store as an argument to hooks dependency.
   RECOMMENDED: Use store segments instead.
 
   ```js
@@ -112,7 +112,7 @@ A small React wrapper for [in memory event store](https://github.com/event-storm
 ## Usefull tips
 
 The provided hooks will work for any store instance. Some boilerplate for wrapping it with a store instance
-to avoid importing store everywhere:
+to avoid importing the store everywhere:
 ```js
 import { useStore as useBaseStore, usePublish as useBasePublish } from 'react-event-storm';
 import { createStore } from 'event-storm';
