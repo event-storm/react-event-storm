@@ -11,9 +11,8 @@ A small React wrapper for [in memory event store](https://github.com/event-storm
 
 ## API
 
-- Subscribing to store updates
-  **useStore**
-  React wrapper provides a simple hook that wraps the store's `subscribe` method.
+- Subscribing to store updates. 
+  **useStore** provides a simple hook that wraps the store's `subscribe` method.
   **It will automatically unsubscribe the component from the store changes on unmount**.
 
   ```js
@@ -34,7 +33,8 @@ A small React wrapper for [in memory event store](https://github.com/event-storm
   }
   ```
 
-  NOT RECOMMENDED: Do not use store as an argument to hooks dependency
+  NOT RECOMMENDED: Do not use store as an argument to hooks dependency.
+  RECOMMENDED: Use store segments instead.
 
   ```js
 
