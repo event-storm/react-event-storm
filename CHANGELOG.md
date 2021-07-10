@@ -1,3 +1,12 @@
+# [1.1.0](https://github.com/event-storm/react-event-storm/compare/v1.0.0...v1.1.0) (2021-07-10)
+
+
+### Features
+
+* **subcritpions:** add passive subscription support for handlers ([0ccbbc5](https://github.com/event-storm/react-event-storm/commit/0ccbbc505ae00b886cb8e0c7afea723c082b001c))
+
+
+
 # [1.0.0](https://github.com/event-storm/react-event-storm/compare/v0.4.0...v1.0.0) (2021-07-05)
 
 
