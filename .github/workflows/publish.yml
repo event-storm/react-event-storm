@@ -1,5 +1,6 @@
-name: Pubilsh
+name: Publish
 on:
+  workflow_dispatch:
   push:
     branches: [master]
     paths:
@@ -9,19 +10,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout to the repository
+      - name: Checkout to repository
         uses: actions/checkout@v2
-      - name: Use NodeJS, check with linter and  run tests
+      - name: Use NodeJS
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: yarn install --frozen-lockfile
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
       - name: Linting
         run: yarn run lint
       - name: Testing
         run: yarn run jest
-      - name: Conventional Changelog Action
+      - name: Generate changelog
         id: changelog
         uses: TriPSs/conventional-changelog-action@v2
         with:
@@ -34,7 +36,7 @@ jobs:
         run: yarn run publish-lib
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Create Release
+      - name: Create release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
@@ -42,3 +44,16 @@ jobs:
           tag_name: ${{ steps.changelog.outputs.tag }}
           release_name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}
+      - name: Rollback release
+        if: failure() && steps.changelog.outputs.id != ''
+        uses: author/action-rollback@stable
+        with:
+          id: ${{ steps.changelog.outputs.id }}
+          tag: ${{ steps.changelog.outputs.tag }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Automatic Revert
+        if: failure()
+        uses: srt32/revert@v0.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
