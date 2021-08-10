@@ -12,6 +12,9 @@ A small React wrapper for [in memory event store](https://github.com/event-storm
 ## API
 
 **useStore**
+**useStore** provides a simple hook that wraps the store's `subscribe` method.
+**It will automatically unsubscribe the component from the store changes on unmount**.
+
 ## What is a Subscription
 
 Generally saying subscription is receiving some information(maybe something) over some agreement. In the case of computer science, there are some patterns based on this logic(mainly it is popular in event-driven design systems).
@@ -112,7 +115,8 @@ function App() {
 ```
   You can change the value of `active` option from `true` to `false` or vise versa. Whenever it'll be `false` your component will not be updated for the used keys' changes.
 
-  NOT RECOMMENDED: Do not use store as an argument to hooks dependency
+  NOT RECOMMENDED: Do not use the store as an argument to hooks dependency.
+  RECOMMENDED: Use store segments instead.
 
   ```js
 
@@ -188,7 +192,7 @@ function App() {
 ## Usefull tips
 
 The provided hooks will work for any store instance. Some boilerplate for wrapping it with a store instance
-to avoid importing store everywhere:
+to avoid importing the store everywhere:
 ```js
 import { useStore as useBaseStore, usePublish as useBasePublish } from 'react-event-storm';
 import { createStore } from 'event-storm';
