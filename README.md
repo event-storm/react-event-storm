@@ -104,8 +104,8 @@ const store = createStore({
   grossSalary: 100_000,
 });
 function App() {
-  const [loading, setLoading] = useState(0);
-  const { cards, sizes } = useStore(store, { active: loading });
+  const [loading, setLoading] = useState(true);
+  const { cards, sizes } = useStore(store, { active: !loading });
 
   return loading ? <Loading /> : cards.map(card => <Card sizes={sizes} />);
 }
