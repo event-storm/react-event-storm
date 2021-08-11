@@ -13,11 +13,13 @@ const useStore = (store, options = { active: true }) => {
         modelRefs.current[key]();
       }
       if (!modelRefs.current[key] && options.active) {
-        modelRefs.current[key] = store.models[key].subscribe(forceUpdate);
+        if (store.models[key]) {
+          modelRefs.current[key] = store.models[key].subscribe(forceUpdate);
+        }
       }
-      return store.models[key].getState();
+      return store.models[key] && store.models[key].getState();
     },
-  }), [store]);
+  }), [store.models.length]);
 
   useEffect(() => () => Object.values(modelRefs.current).forEach(unsubscribe => unsubscribe()), []);
 
