@@ -1,3 +1,7 @@
+## [1.2.1](https://github.com/event-storm/react-event-storm/compare/v1.2.0...v1.2.1) (2021-08-15)
+
+
+
 # [1.2.0](https://github.com/event-storm/react-event-storm/compare/v1.1.0...v1.2.0) (2021-08-15)
 
 
