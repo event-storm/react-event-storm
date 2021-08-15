@@ -29,7 +29,7 @@
     "url": "https://github.com/event-store/react-event-store/issues"
   },
   "peerDependencies": {
-    "event-storm": "^1.1.1",
+    "event-storm": "^1.1.2",
     "react": ">=16.8.0"
   },
   "devDependencies": {
