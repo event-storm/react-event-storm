@@ -15,7 +15,7 @@
     "hooks",
     "store",
     "event-sourcing",
-    "react-event-store",
+    "react-event-storm",
     "store-management"
   ],
   "author": "artur93gev",
@@ -72,8 +72,5 @@
       "pre-commit": "lint-staged && yarn run jest",
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
-  },
-  "dependencies": {
-    "remove": "^0.1.5"
   }
 }
