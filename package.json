@@ -24,9 +24,9 @@
     "type": "git",
     "url": "git+https://github.com/event-storm/react-event-storm.git"
   },
-  "homepage": "https://github.com/event-store/react-event-store#readme",
+  "homepage": "https://github.com/event-storm/react-event-storm#readme",
   "bugs": {
-    "url": "https://github.com/event-store/react-event-store/issues"
+    "url": "https://github.com/event-storm/react-event-storm/issues"
   },
   "peerDependencies": {
     "event-storm": "^1.1.2",
