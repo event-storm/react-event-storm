@@ -1,3 +1,31 @@
+## [1.2.1](https://github.com/event-storm/react-event-storm/compare/v1.2.0...v1.2.1) (2021-08-15)
+
+
+
+# [1.2.0](https://github.com/event-storm/react-event-storm/compare/v1.1.0...v1.2.0) (2021-08-15)
+
+
+### Bug Fixes
+
+* **usestore:** non registered key updates are inccorect ([6815ea4](https://github.com/event-storm/react-event-storm/commit/6815ea4e2e8a372f943e8ba225e83520a82c0d26))
+* **usestore:** none existing key subscription not working ([2aded27](https://github.com/event-storm/react-event-storm/commit/2aded278fcc387878d31759fded60e086d8a8994))
+
+
+### Features
+
+* **usestore:** adding a control property for store subscription ([552eea0](https://github.com/event-storm/react-event-storm/commit/552eea06d480006d8252c1368ff3c9209b7dab14))
+
+
+
+# [1.1.0](https://github.com/event-storm/react-event-storm/compare/v1.0.0...v1.1.0) (2021-07-10)
+
+
+### Features
+
+* **subcritpions:** add passive subscription support for handlers ([0ccbbc5](https://github.com/event-storm/react-event-storm/commit/0ccbbc505ae00b886cb8e0c7afea723c082b001c))
+
+
+
 # [1.0.0](https://github.com/event-storm/react-event-storm/compare/v0.4.0...v1.0.0) (2021-07-05)
 
 

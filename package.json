@@ -1,6 +1,6 @@
 {
   "name": "react-event-storm",
-  "version": "1.0.0",
+  "version": "1.2.1",
   "description": "React wrapper for event-store library",
   "main": "./index.js",
   "types": "./types/index.d.ts",
@@ -15,7 +15,7 @@
     "hooks",
     "store",
     "event-sourcing",
-    "react-event-store",
+    "react-event-storm",
     "store-management"
   ],
   "author": "artur93gev",
@@ -24,12 +24,12 @@
     "type": "git",
     "url": "git+https://github.com/event-storm/react-event-storm.git"
   },
-  "homepage": "https://github.com/event-store/react-event-store#readme",
+  "homepage": "https://github.com/event-storm/react-event-storm#readme",
   "bugs": {
-    "url": "https://github.com/event-store/react-event-store/issues"
+    "url": "https://github.com/event-storm/react-event-storm/issues"
   },
   "peerDependencies": {
-    "event-storm": "^1.1.0",
+    "event-storm": "^1.1.2",
     "react": ">=16.8.0"
   },
   "devDependencies": {
@@ -72,8 +72,5 @@
       "pre-commit": "lint-staged && yarn run jest",
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
-  },
-  "dependencies": {
-    "remove": "^0.1.5"
   }
 }
