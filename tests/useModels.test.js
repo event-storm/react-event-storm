@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { createModel } from 'event-storm';
 import { renderHook, act } from '@testing-library/react-hooks';
 
-import { useModels } from '../src';
+import { useModels } from 'src';
 
 describe('useModels hook', () => {
   test('must match the pattern', () => {
@@ -11,7 +11,7 @@ describe('useModels hook', () => {
     const finalState = 10;
     const ageModel = createModel(initialState);
 
-    const { result } = renderHook(() => useModels(ageModel));
+    const { result } = renderHook(() => useModels([ageModel]));
 
     expect(result.current[0]).toBe(initialState);
 
@@ -28,7 +28,7 @@ describe('useModels hook', () => {
     const ageModel = createModel(initialState);
 
     function Example() {
-      const [age] = useModels(ageModel);
+      const [age] = useModels([ageModel]);
       return <div>{age}</div>;
     }
     const example = shallow(<Example />);
@@ -47,7 +47,7 @@ describe('useModels hook', () => {
     const heightModel = createModel('tall');
 
     function Example() {
-      const [age] = useModels(ageModel);
+      const [age] = useModels([ageModel]);
       return <div>{age}</div>;
     }
     const example = shallow(<Example />);
