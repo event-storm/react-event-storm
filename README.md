@@ -11,8 +11,8 @@ A small React wrapper for [in memory event store](https://github.com/event-storm
 
 ## API
 
-**useStore**
-**useStore** provides a simple hook that wraps the store's `subscribe` method.
+**useStorm**
+**useStorm** provides a simple hook that wraps the store's `subscribe` method.
 **It will automatically unsubscribe the component from the store changes on unmount**.
 
 ## What is a Subscription
@@ -24,11 +24,11 @@ As you can expect the library is providing a subscription functionality to allow
 
 Imagine a react application. You have a component and it is subscribed to store. It is using `sizes` and `cards` properties.
 The `cards` are used to render a list. Let's imagine you want to save in backend the provided `sizes` for clicked `card`. So, the `sizes` information is used whenever you are clicking on a particular `card`. In most store managers(e.g. Overmind, Redux) your component will be updated on `sizes` change even if the user will never click to the list.
-To avoid unnecassary renders, you'll need to directly access the store in your `card`'s click event handler. Which is most probably not the solution you're looking for. With the workarround you'll get store usage in a "react-way" as usual, also in a "none react-way"(accessing the store diretly, not via `useStore` or some other hook). Also, worth nothing that you'll have components where you need more than one handler. So you'll need to duplicate the code that accesses the store.
+To avoid unnecassary renders, you'll need to directly access the store in your `card`'s click event handler. Which is most probably not the solution you're looking for. With the workarround you'll get store usage in a "react-way" as usual, also in a "none react-way"(accessing the store diretly, not via `useStorm` or some other hook). Also, worth nothing that you'll have components where you need more than one handler. So you'll need to duplicate the code that accesses the store.
 
 ## The Solution
 
-The `event-storm` is presenting 3 levels of subscription(via **useStore**):
+The `event-storm` is presenting 3 levels of subscription(via **useStorm**):
 - Active subscription
 - Passive subscription
 - Condition-based subscription
@@ -37,7 +37,7 @@ The `event-storm` is presenting 3 levels of subscription(via **useStore**):
   This is a regular subscription. Whenever you are using any key from the store like in the example below, you'll receive any update on that keys.
 ```js
 import { createStore } from 'event-storm';
-import { useStore } from 'react-event-storm';
+import { useStorm } from 'react-event-storm';
 
 const store = createStore({
   taxes: 20,
@@ -45,7 +45,7 @@ const store = createStore({
 });
 
 function AnyComponent() {
-  const { taxes } = useStore(store);
+  const { taxes } = useStorm(store);
 
   return (
     <div>{taxes}</div>
@@ -55,7 +55,7 @@ function AnyComponent() {
   This is the same as:
 ```js
 import { createStore } from 'event-storm';
-import { useStore } from 'react-event-storm';
+import { useStorm } from 'react-event-storm';
 
 const store = createStore({
   taxes: 20,
@@ -63,7 +63,7 @@ const store = createStore({
 });
 
 function AnyComponent() {
-  const { taxes } = useStore(store, { active: true });
+  const { taxes } = useStorm(store, { active: true });
 
   return (
     <div>{taxes}</div>
@@ -74,7 +74,7 @@ function AnyComponent() {
   This option allows you to access any store key without getting you component rerendered on the particular keys' updates. **It is guaranteed that whenever you'll use the store values they'll be up to date(fresh values)**.
 ```js
 import { createStore } from 'event-storm';
-import { useStore } from 'react-event-storm';
+import { useStorm } from 'react-event-storm';
 
 const store = createStore({
   taxes: 20,
@@ -82,7 +82,7 @@ const store = createStore({
 });
 
 function AnyComponent() {
-  const { taxes } = useStore(store, { active: false });
+  const { taxes } = useStorm(store, { active: false });
 
   const onClick = () => {
     console.log(taxes);
@@ -100,7 +100,7 @@ function AnyComponent() {
 ```js
 import { useState } from 'react';
 import { createStore } from 'event-storm';
-import { useStore, usePublish } from 'react-event-storm';
+import { useStorm, usePublish } from 'react-event-storm';
 
 const store = createStore({
   taxes: 20,
@@ -109,7 +109,7 @@ const store = createStore({
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const { cards, sizes } = useStore(store, { active: !loading });
+  const { cards, sizes } = useStorm(store, { active: !loading });
 
   return loading ? <Loading /> : cards.map(card => <Card sizes={sizes} />);
 }
@@ -122,7 +122,7 @@ function App() {
   ```js
 
   import { createStore } from 'event-storm';
-  import { useStore } from 'react-event-storm';
+  import { useStorm } from 'react-event-storm';
 
   const store = createStore({
     taxes: 20,
@@ -130,7 +130,7 @@ function App() {
   });
 
   function AnyComponent() {
-    const { taxes } = useStore(store);
+    const { taxes } = useStorm(store);
 
     /* The following way of using the store is not recommended. Each render will update this effect.
       useEffect(() => {
@@ -152,7 +152,7 @@ function App() {
   **usePublish**
    ```js
   import { createStore } from 'event-storm';
-  import { useStore, usePublish } from 'react-event-storm';
+  import { useStorm, usePublish } from 'react-event-storm';
 
   const store = createStore({
     taxes: 20,
@@ -160,7 +160,7 @@ function App() {
   });
 
   function AnyComponent() {
-    const { taxes } = useStore(store);
+    const { taxes } = useStorm(store);
     const publish = usePublish(store);
 
     return (
@@ -181,7 +181,7 @@ function App() {
   const age = createModel(1);
 
   function AnyComponent() {
-    const [popupVisible, ageValue] = useModels(isPopupVisible, age);
+    const [popupVisible, ageValue] = useModels([isPopupVisible, age]);
     return (
       <div>
         {isPopupVisible ? 'close' : 'open'}
@@ -195,7 +195,7 @@ function App() {
 The provided hooks will work for any store instance. Some boilerplate for wrapping it with a store instance
 to avoid importing the store everywhere:
 ```js
-import { useStore as useBaseStore, usePublish as useBasePublish } from 'react-event-storm';
+import { useStorm as useBaseStorm, usePublish as useBasePublish } from 'react-event-storm';
 import { createStore } from 'event-storm';
 
 const defaultState = {
@@ -207,7 +207,7 @@ const defaultState = {
 
 const store = createStore(defaultState);
 
-export const useStore = options => useBaseStore(store, options);
+export const useStorm = options => useBaseStorm(store, options);
 export const usePublish = () => useBasePublish(store);
 export default store;
 ```
