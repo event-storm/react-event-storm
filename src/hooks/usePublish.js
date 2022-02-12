@@ -1,3 +1,3 @@
-const usePublish = store => store.publish;
+const usePublish = storm => storm.publish;
 
 export default usePublish;
