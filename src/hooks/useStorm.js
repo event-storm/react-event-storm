@@ -1,5 +1,5 @@
 import { useMemo, useRef } from 'react';
-import { selectFragment as eventStormSelectFragment } from 'event-storm';
+import { createSubStorm } from 'event-storm';
 
 import useSubscribe from './useSubscribe';
 
@@ -7,7 +7,7 @@ const takeAll = (state, exact) => exact(state);
 
 const useStorm = (storm, selectFragment = takeAll, { active = true } = {}) => {
   const virtualModelRef = useRef(null);
-  virtualModelRef.current = useMemo(() => eventStormSelectFragment(storm, selectFragment), [storm, selectFragment]);
+  virtualModelRef.current = useMemo(() => createSubStorm(storm, selectFragment), [storm, selectFragment]);
 
   useSubscribe([virtualModelRef.current], active);
 
