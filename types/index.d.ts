@@ -8,9 +8,9 @@ export function useModels<T extends IModelConfiguration>(models: IModel<any, T>[
 
 export function useStorm<T>(
   store: IStorm<T>,
-  selectToFragment?: <K>(
+  selectToFragment?: (
     state: IStormState<T>,
-    subscribe: (fragment: K) => K,
+    subscribe: <K>(fragment: IModel<K, IVirtualModelConfiguration>) => K,
   ) => IModel<any, IVirtualModelConfiguration>,
   options?: ISubscriptionOptions,
 ): IStormState<T>;
