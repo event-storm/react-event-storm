@@ -14,9 +14,7 @@ const useStorm = (storm, callback = takeAll, { active = true } = {}) => {
     });
   }, []);
 
-  return active ? resultRef.current : useMemo(() => new Proxy(resultRef.current, {
-    get: (_, prop) => resultRef.current[prop],
-  }), [resultRef.current]);
+  return active ? resultRef.current : resultRef;
 };
 
 export default useStorm;

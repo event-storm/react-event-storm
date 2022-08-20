@@ -19,4 +19,36 @@ describe('useStorm hook', () => {
 
     expect(result.current.age).toBe(finalState.age);
   });
+
+  test('event storm must subscribe to only specified fragment', () => {
+    const initialState = { age: 19, name: 'Bob' };
+    const storm = createStorm(initialState);
+    const finalState = { name: 'Alice' };
+
+    const { result } = renderHook(() => useStorm(storm, (state, subscribe) => subscribe(state.age)));
+
+    expect(result.current).toBe(initialState.age);
+
+    act(() => {
+      storm.dispatch(finalState);
+    });
+
+    expect(result.current).toBe(initialState.age);
+  });
+
+  test('event storm must subscribe to only specified fragment, even when active is set to false', () => {
+    const initialState = { age: 19, name: 'Bob' };
+    const storm = createStorm(initialState);
+    const finalState = { name: 'Alice' };
+
+    const { result } = renderHook(() => useStorm(storm, (state, subscribe) => subscribe(state.age), { active: false }));
+
+    expect(result.current).toEqual({ current: initialState.age });
+
+    act(() => {
+      storm.dispatch(finalState);
+    });
+
+    expect(result.current).toEqual({ current: initialState.age });
+  });
 });
