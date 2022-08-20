@@ -3,7 +3,7 @@ import { renderHook, act } from '@testing-library/react-hooks';
 
 import { useStorm } from 'src';
 
-describe('useModels hook', () => {
+describe('useStorm hook', () => {
   test('must match the pattern', () => {
     const initialState = { age: 19 };
     const finalState = { age: 20 };
@@ -14,7 +14,7 @@ describe('useModels hook', () => {
     expect(result.current.age).toBe(initialState.age);
 
     act(() => {
-      storm.publish(finalState);
+      storm.dispatch(finalState);
     });
 
     expect(result.current.age).toBe(finalState.age);

@@ -16,13 +16,13 @@ describe('useModels hook', () => {
     expect(result.current[0]).toBe(initialState);
 
     act(() => {
-      ageModel.publish(finalState);
+      ageModel.dispatch(finalState);
     });
 
     expect(result.current[0]).toBe(finalState);
   });
 
-  test('model publish must update the component', () => {
+  test('model dispatch must update the component', () => {
     const initialState = 0;
     const finalState = 10;
     const ageModel = createModel(initialState);
@@ -35,7 +35,7 @@ describe('useModels hook', () => {
 
     expect(example.text()).toBe(String(initialState));;
 
-    ageModel.publish(finalState);
+    ageModel.dispatch(finalState);
 
     example.setProps({});
     expect(example.text()).toBe(String(finalState));;
@@ -54,7 +54,7 @@ describe('useModels hook', () => {
 
     expect(example.text()).toBe(String(initialState));;
 
-    heightModel.publish('super-tall');
+    heightModel.dispatch('super-tall');
 
     example.setProps({});
     expect(example.text()).toBe(String(initialState));;

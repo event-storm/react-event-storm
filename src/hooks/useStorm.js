@@ -1,17 +1,22 @@
 import { useMemo, useRef } from 'react';
-import { createSubStorm } from 'event-storm';
 
-import useSubscribe from './useSubscribe';
+import useForceUpdate from './useForceUpdate';
 
 const takeAll = (state, exact) => exact(state);
 
-const useStorm = (storm, selectFragment = takeAll, { active = true } = {}) => {
-  const virtualModelRef = useRef(null);
-  virtualModelRef.current = useMemo(() => createSubStorm(storm, selectFragment), [storm, selectFragment]);
+const useStorm = (storm, callback = takeAll, { active = true } = {}) => {
+  const forceUpdate = useForceUpdate();
+  const resultRef = useRef(null);
+  useMemo(() => {
+    storm.subscribe((...args) => {
+      resultRef.current = callback(...args);
+      active && forceUpdate([]);
+    });
+  }, []);
 
-  useSubscribe([virtualModelRef.current], active);
-
-  return virtualModelRef.current.getState();
-}
+  return active ? resultRef.current : useMemo(() => new Proxy(resultRef.current, {
+    get: (_, prop) => resultRef.current[prop],
+  }), [resultRef.current]);
+};
 
 export default useStorm;

@@ -1,9 +1,9 @@
 <a href="https://www.npmjs.com/package/react-event-storm"><img src="https://img.shields.io/badge/npm-react--event--storm-brightgreen.svg"></a> <a href="https://www.npmjs.com/package/react-event-storm"><img src="https://img.shields.io/npm/v/react-event-storm.svg"></a> [![Publish](https://github.com/event-storm/react-event-storm/actions/workflows/publish.yml/badge.svg?branch=master)](https://github.com/event-storm/react-event-storm/actions/workflows/publish.yml) <a href="https://www.npmjs.com/package/react-event-storm"><img src="https://img.shields.io/bundlephobia/minzip/react-event-storm"> </a>
 
 
-# React event store
+# React event storm
 
-A small React wrapper for [in memory event store](https://github.com/event-storm/event-storm/blob/master/README.md). The provided API is with hooks.
+A small React wrapper for [in memory event storm](https://github.com/event-storm/event-storm/blob/master/README.md). The provided API is with hooks.
 
 ## Technical stack
 
@@ -12,19 +12,19 @@ A small React wrapper for [in memory event store](https://github.com/event-storm
 ## API
 
 **useStorm**
-**useStorm** provides a simple hook that wraps the store's `subscribe` method.
-**It will automatically unsubscribe the component from the store changes on unmount**.
+**useStorm** provides a simple hook that wraps the storm's `subscribe` method.
+**It will automatically unsubscribe the component from the storm changes on unmount**.
 
 ## What is a Subscription
 
 Generally saying subscription is receiving some information(maybe something) over some agreement. In the case of computer science, there are some patterns based on this logic(mainly it is popular in event-driven design systems).
-As you can expect the library is providing a subscription functionality to allow subscription on store segments information.
+As you can expect the library is providing a subscription functionality to allow subscription on storm segments information.
 
 ## The problem
 
-Imagine a react application. You have a component and it is subscribed to store. It is using `sizes` and `cards` properties.
-The `cards` are used to render a list. Let's imagine you want to save in backend the provided `sizes` for clicked `card`. So, the `sizes` information is used whenever you are clicking on a particular `card`. In most store managers(e.g. Overmind, Redux) your component will be updated on `sizes` change even if the user will never click to the list.
-To avoid unnecassary renders, you'll need to directly access the store in your `card`'s click event handler. Which is most probably not the solution you're looking for. With the workarround you'll get store usage in a "react-way" as usual, also in a "none react-way"(accessing the store diretly, not via `useStorm` or some other hook). Also, worth nothing that you'll have components where you need more than one handler. So you'll need to duplicate the code that accesses the store.
+Imagine a react application. You have a component and it is subscribed to storm. It is using `sizes` and `cards` properties.
+The `cards` are used to render a list. Let's imagine you want to save in backend the provided `sizes` for clicked `card`. So, the `sizes` information is used whenever you are clicking on a particular `card`. In most storm managers(e.g. Overmind, Redux) your component will be updated on `sizes` change even if the user will never click to the list.
+To avoid unnecassary renders, you'll need to directly access the storm in your `card`'s click event handler. Which is most probably not the solution you're looking for. With the workarround you'll get storm usage in a "react-way" as usual, also in a "none react-way"(accessing the storm diretly, not via `useStorm` or some other hook). Also, worth nothing that you'll have components where you need more than one handler. So you'll need to duplicate the code that accesses the storm.
 
 ## The Solution
 
@@ -34,18 +34,18 @@ The `event-storm` is presenting 3 levels of subscription(via **useStorm**):
 - Condition-based subscription
 
 #### Active Subscription
-  This is a regular subscription. Whenever you are using any key from the store like in the example below, you'll receive any update on that keys.
+  This is a regular subscription. Whenever you are using any key from the storm like in the example below, you'll receive any update on that keys.
 ```js
-import { createStore } from 'event-storm';
+import { createstorm } from 'event-storm';
 import { useStorm } from 'react-event-storm';
 
-const store = createStore({
+const storm = createstorm({
   taxes: 20,
   grossSalary: 100_000,
 });
 
 function AnyComponent() {
-  const { taxes } = useStorm(store);
+  const { taxes } = useStorm(storm);
 
   return (
     <div>{taxes}</div>
@@ -54,16 +54,16 @@ function AnyComponent() {
 ````
   This is the same as:
 ```js
-import { createStore } from 'event-storm';
+import { createstorm } from 'event-storm';
 import { useStorm } from 'react-event-storm';
 
-const store = createStore({
+const storm = createstorm({
   taxes: 20,
   grossSalary: 100_000,
 });
 
 function AnyComponent() {
-  const { taxes } = useStorm(store, { active: true });
+  const { taxes } = useStorm(storm, { active: true });
 
   return (
     <div>{taxes}</div>
@@ -71,18 +71,18 @@ function AnyComponent() {
 }
 ````
 #### Passive subscription
-  This option allows you to access any store key without getting you component rerendered on the particular keys' updates. **It is guaranteed that whenever you'll use the store values they'll be up to date(fresh values)**.
+  This option allows you to access any storm key without getting you component rerendered on the particular keys' updates. **It is guaranteed that whenever you'll use the storm values they'll be up to date(fresh values)**.
 ```js
-import { createStore } from 'event-storm';
+import { createstorm } from 'event-storm';
 import { useStorm } from 'react-event-storm';
 
-const store = createStore({
+const storm = createstorm({
   taxes: 20,
   grossSalary: 100_000,
 });
 
 function AnyComponent() {
-  const { taxes } = useStorm(store, { active: false });
+  const { taxes } = useStorm(storm, { active: false });
 
   const onClick = () => {
     console.log(taxes);
@@ -99,43 +99,43 @@ function AnyComponent() {
   will be rerendered on the key's updates. **With this feature, you are controlling your subscription.**
 ```js
 import { useState } from 'react';
-import { createStore } from 'event-storm';
-import { useStorm, usePublish } from 'react-event-storm';
+import { createstorm } from 'event-storm';
+import { useStorm, useDispatch } from 'react-event-storm';
 
-const store = createStore({
+const storm = createstorm({
   taxes: 20,
   grossSalary: 100_000,
 });
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const { cards, sizes } = useStorm(store, { active: !loading });
+  const { cards, sizes } = useStorm(storm, { active: !loading });
 
   return loading ? <Loading /> : cards.map(card => <Card sizes={sizes} />);
 }
 ```
   You can change the value of `active` option from `true` to `false` or vise versa. Whenever it'll be `false` your component will not be updated for the used keys' changes.
 
-  NOT RECOMMENDED: Do not use the store as an argument to hooks dependency.
-  RECOMMENDED: Use store segments instead.
+  NOT RECOMMENDED: Do not use the storm as an argument to hooks dependency.
+  RECOMMENDED: Use storm segments instead.
 
   ```js
 
-  import { createStore } from 'event-storm';
+  import { createstorm } from 'event-storm';
   import { useStorm } from 'react-event-storm';
 
-  const store = createStore({
+  const storm = createstorm({
     taxes: 20,
     grossSalary: 100_000,
   });
 
   function AnyComponent() {
-    const { taxes } = useStorm(store);
+    const { taxes } = useStorm(storm);
 
-    /* The following way of using the store is not recommended. Each render will update this effect.
+    /* The following way of using the storm is not recommended. Each render will update this effect.
       useEffect(() => {
-        console.log(store.taxes);
-      }, [store]);
+        console.log(storm.taxes);
+      }, [storm]);
     */
 
    // correct usage
@@ -148,23 +148,23 @@ function App() {
     );
   }
   ```
-### Updating the store
-  **usePublish**
+### Updating the storm
+  **useDispatch**
    ```js
-  import { createStore } from 'event-storm';
-  import { useStorm, usePublish } from 'react-event-storm';
+  import { createstorm } from 'event-storm';
+  import { useStorm, useDispatch } from 'react-event-storm';
 
-  const store = createStore({
+  const storm = createstorm({
     taxes: 20,
     grossSalary: 100_000,
   });
 
   function AnyComponent() {
-    const { taxes } = useStorm(store);
-    const publish = usePublish(store);
+    const { taxes } = useStorm(storm);
+    const dispatch = useDispatch(storm);
 
     return (
-      <div onClick={() => publish({ taxes: 30 })}>
+      <div onClick={() => dispatch({ taxes: 30 })}>
         {taxes}
       </div>
     );
@@ -192,11 +192,11 @@ function App() {
   ```
 ## Usefull tips
 
-The provided hooks will work for any store instance. Some boilerplate for wrapping it with a store instance
-to avoid importing the store everywhere:
+The provided hooks will work for any storm instance. Some boilerplate for wrapping it with a storm instance
+to avoid importing the storm everywhere:
 ```js
-import { useStorm as useBaseStorm, usePublish as useBasePublish } from 'react-event-storm';
-import { createStore } from 'event-storm';
+import { useStorm as useBaseStorm, useDispatch as useBaseDispatch } from 'react-event-storm';
+import { createstorm } from 'event-storm';
 
 const defaultState = {
   posts: [],
@@ -205,11 +205,11 @@ const defaultState = {
   isLoggedIn: ({ user }) => !!user,
 };
 
-const store = createStore(defaultState);
+const storm = createstorm(defaultState);
 
-export const useStorm = options => useBaseStorm(store, options);
-export const usePublish = () => useBasePublish(store);
-export default store;
+export const useStorm = options => useBaseStorm(storm, options);
+export const useDispatch = () => useBaseDispatch(storm);
+export default storm;
 ```
 ## Playground
 

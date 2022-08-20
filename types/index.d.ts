@@ -6,16 +6,16 @@ export interface ISubscriptionOptions {
 
 export function useModels<T extends IModelConfiguration>(models: IModel<any, T>[], options?: ISubscriptionOptions): any[];
 
-export type TFragmentSubscribe<K> = (fragment: IStormState<K>) => K;
-export type TSelectFragment<T> = (
+export type TFragmentSubscribe<K> = (fragment: K) => K;
+export type TSelectFragment<T, K = any> = (
   state: IStormState<T>,
   subscribe: TFragmentSubscribe<T>,
-) => any;
+) => K;
 
-export function useStorm<T>(
-  store: IStorm<T>,
-  selectToFragment?: TSelectFragment<T>,
+export function useStorm<T, K = any>(
+  storm: IStorm<T>,
+  selectToFragment?: TSelectFragment<T, K>,
   options?: ISubscriptionOptions,
-): IStormState<T>;
+): K;
 
-export function usePublish<T>(segment: IStorm<T>): IStorm<T>['publish'];
+export function useDispatch<T>(segment: IStorm<T>): IStorm<T>['dispatch'];

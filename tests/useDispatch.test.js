@@ -1,15 +1,15 @@
 import { createStorm } from 'event-storm';
 import { renderHook, act } from '@testing-library/react-hooks';
 
-import { usePublish } from 'src';
+import { useDispatch } from 'src';
 
-describe('useModels hook', () => {
-  test('must match the pattern', () => {
+describe('useDispatch hook', () => {
+  test('dispatch must update the state', async () => {
     const initialState = { age: 19 };
     const finalState = { age: 20 };
     const storm = createStorm(initialState);
 
-    const { result } = renderHook(() => usePublish(storm));
+    const { result } = renderHook(() => useDispatch(storm));
 
     expect(result.current).toBeInstanceOf(Function);
 

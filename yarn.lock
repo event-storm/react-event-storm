@@ -2777,10 +2777,12 @@ esutils@^2.0.2:
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.3.tgz#74d2eb4de0b8da1293711910d50775b9b710ef64"
   integrity sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==
 
-event-storm@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/event-storm/-/event-storm-2.0.5.tgz#893fc87ea9f95552db12382e6e49908f84e8eed1"
-  integrity sha512-UUm/6lQ5qjbqFSQRXxv2kwHXvGZ/TZ4fE7rQIdJmXMIZoKQGOguMFVO20uJ53EdfRNZgxSjt+6SA7e+HBcGDdA==
+event-storm@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/event-storm/-/event-storm-3.0.0.tgz#4a2a9266b812d25ade6054e2a385aa98bf12505b"
+  integrity sha512-a4hyFlhp22wg15lHJkUPJ9AR4P+oWYi9NMc6qrTKAsLiBbJd0PZtNceNrQ5RMDhx2RAnBxF+t4bqqR7sxPWs9Q==
+  dependencies:
+    immer "^9.0.15"
 
 exec-sh@^0.3.2:
   version "0.3.4"
@@ -3464,6 +3466,11 @@ ignore@^5.1.1:
   version "5.1.8"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.1.8.tgz#f150a8b50a34289b33e22f5889abd4d8016f0e57"
   integrity sha512-BMpfD7PpiETpBl/A6S498BaIJ6Y/ABT93ETbby2fP00v4EbvPBXWEoaR1UBPKs3iR53pJY7EtZk5KACI57i1Uw==
+
+immer@^9.0.15:
+  version "9.0.15"
+  resolved "https://registry.yarnpkg.com/immer/-/immer-9.0.15.tgz#0b9169e5b1d22137aba7d43f8a81a495dd1b62dc"
+  integrity sha512-2eB/sswms9AEUSkOm4SbV5Y7Vmt/bKRwByd52jfLkW4OLYeaTP3EEiJ9agqU0O/tq6Dk62Zfj+TJSqfm1rLVGQ==
 
 import-fresh@^3.0.0, import-fresh@^3.2.1:
   version "3.3.0"
