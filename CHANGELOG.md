@@ -1,3 +1,28 @@
+# [4.0.0](https://github.com/event-storm/react-event-storm/compare/v1.2.1...v4.0.0) (2022-08-21)
+
+
+### Bug Fixes
+
+* **deps:** remove package-lock. added by mistake ([d8f5d8c](https://github.com/event-storm/react-event-storm/commit/d8f5d8c1a272a9f9ef019d91995ec0918969318c))
+* **integration:** update event-storm method name ([03a2283](https://github.com/event-storm/react-event-storm/commit/03a2283b6595e5e3f69fc5a86d5a0e48e582669e))
+* **type:** fix types from store to storm ([3c7e21c](https://github.com/event-storm/react-event-storm/commit/3c7e21c7052ff993e9211095fb8b7ff81322e037))
+* **types:** selectFragment generic part was wrong ([537a9e2](https://github.com/event-storm/react-event-storm/commit/537a9e28ffbb255453e3aaa63a9d122ab1fc63c3))
+* **types:** selectFragment second argument must receive a generic ([126fd6b](https://github.com/event-storm/react-event-storm/commit/126fd6b875ae9103208a11fde5582b631148f378))
+
+
+### Features
+
+* **package:** event storm update integration ([dad9cbb](https://github.com/event-storm/react-event-storm/commit/dad9cbbb008b67d454495cef657ae35bf4e89c32))
+* **project:** update event storm library ([3a0b897](https://github.com/event-storm/react-event-storm/commit/3a0b8975c4795ff15ed477928a662d28200a2127))
+
+
+### BREAKING CHANGES
+
+* **package:** publish method was renamed to be dispatch
+* **project:** the useStore hook is renamed to useStorm
+
+
+
 ## [1.2.1](https://github.com/event-storm/react-event-storm/compare/v1.2.0...v1.2.1) (2021-08-15)
 
 
