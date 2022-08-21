@@ -1,6 +1,6 @@
 {
   "name": "react-event-storm",
-  "version": "1.2.1",
+  "version": "3.2.1",
   "description": "React wrapper for event-store library",
   "main": "./index.js",
   "types": "./types/index.d.ts",
@@ -8,6 +8,7 @@
     "test": "jest",
     "bundle": "rollup -c",
     "lint": "eslint src/*.js",
+    "test:watch": "jest --watch",
     "build": "rimraf ./dist && yarn run bundle",
     "publish-lib": "yarn run build && cd dist && yarn publish"
   },
@@ -29,7 +30,7 @@
     "url": "https://github.com/event-storm/react-event-storm/issues"
   },
   "peerDependencies": {
-    "event-storm": "^1.1.2",
+    "event-storm": "^3.0.0",
     "react": ">=16.8.0"
   },
   "devDependencies": {
@@ -44,7 +45,7 @@
     "cz-conventional-changelog": "^3.3.0",
     "enzyme": "^3.11.0",
     "eslint": "^7.19.0",
-    "event-storm": "^1.1.0",
+    "event-storm": "^3.0.0",
     "husky": "^4.3.8",
     "jest": "^26.6.3",
     "lint-staged": "^10.5.3",

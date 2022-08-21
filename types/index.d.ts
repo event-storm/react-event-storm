@@ -1,11 +1,21 @@
-import { IModel, IStore, IStoreState } from 'event-storm';
+import { IModel, IStorm, IStormState, IModelConfiguration } from 'event-storm';
 
-export interface IStoreOptions {
-  active: boolean;
+export interface ISubscriptionOptions {
+  active?: boolean;
 }
 
-export function useModels(...models: IModel<any>[]): any[];
+export function useModels<T extends IModelConfiguration>(models: IModel<any, T>[], options?: ISubscriptionOptions): any[];
 
-export function useStore<T>(store: IStore<T>, options?: IStoreOptions): IStoreState<T>;
+export type TFragmentSubscribe<K> = (fragment: K) => K;
+export type TSelectFragment<T, K = any> = (
+  state: IStormState<T>,
+  subscribe: TFragmentSubscribe<T>,
+) => K;
 
-export function usePublish<T>(segment: IStore<T>): IStore['publish'];
+export function useStorm<T, K = any>(
+  storm: IStorm<T>,
+  selectToFragment?: TSelectFragment<T, K>,
+  options?: ISubscriptionOptions,
+): K;
+
+export function useDispatch<T>(segment: IStorm<T>): IStorm<T>['dispatch'];

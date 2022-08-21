@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { createModel } from 'event-storm';
 import { renderHook, act } from '@testing-library/react-hooks';
 
-import { useModels } from '../src';
+import { useModels } from 'src';
 
 describe('useModels hook', () => {
   test('must match the pattern', () => {
@@ -11,31 +11,31 @@ describe('useModels hook', () => {
     const finalState = 10;
     const ageModel = createModel(initialState);
 
-    const { result } = renderHook(() => useModels(ageModel));
+    const { result } = renderHook(() => useModels([ageModel]));
 
     expect(result.current[0]).toBe(initialState);
 
     act(() => {
-      ageModel.publish(finalState);
+      ageModel.dispatch(finalState);
     });
 
     expect(result.current[0]).toBe(finalState);
   });
 
-  test('model publish must update the component', () => {
+  test('model dispatch must update the component', () => {
     const initialState = 0;
     const finalState = 10;
     const ageModel = createModel(initialState);
 
     function Example() {
-      const [age] = useModels(ageModel);
+      const [age] = useModels([ageModel]);
       return <div>{age}</div>;
     }
     const example = shallow(<Example />);
 
     expect(example.text()).toBe(String(initialState));;
 
-    ageModel.publish(finalState);
+    ageModel.dispatch(finalState);
 
     example.setProps({});
     expect(example.text()).toBe(String(finalState));;
@@ -47,14 +47,14 @@ describe('useModels hook', () => {
     const heightModel = createModel('tall');
 
     function Example() {
-      const [age] = useModels(ageModel);
+      const [age] = useModels([ageModel]);
       return <div>{age}</div>;
     }
     const example = shallow(<Example />);
 
     expect(example.text()).toBe(String(initialState));;
 
-    heightModel.publish('super-tall');
+    heightModel.dispatch('super-tall');
 
     example.setProps({});
     expect(example.text()).toBe(String(initialState));;

@@ -82,7 +82,9 @@ module.exports = {
   // ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  // moduleNameMapper: {},
+  moduleNameMapper: {
+    "^src(.*)$": "<rootDir>/src/$1",
+  },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -118,9 +120,9 @@ module.exports = {
   // rootDir: undefined,
 
   // A list of paths to directories that Jest should use to search for files in
-  // roots: [
-  //   "<rootDir>"
-  // ],
+  roots: [
+    "<rootDir>"
+  ],
 
   // Allows you to use a custom runner instead of Jest's default test runner
   // runner: "jest-runner",
@@ -192,4 +194,15 @@ module.exports = {
 
   // Whether to use watchman for file crawling
   // watchman: true,
+  collectCoverageFrom: [
+    'src/**/*.js',
+  ],
+  coverageThreshold: {
+    global: {
+      branches: 80,
+      functions: 85,
+      lines: 85,
+      statements: 85,
+    },
+  },
 };

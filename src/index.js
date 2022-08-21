@@ -1,3 +1,3 @@
-export { default as useStore } from './hooks/useStore';
+export { default as useStorm } from './hooks/useStorm';
 export { default as useModels } from './hooks/useModels';
-export { default as usePublish } from './hooks/usePublish';
+export { default as useDispatch } from './hooks/useDispatch';
