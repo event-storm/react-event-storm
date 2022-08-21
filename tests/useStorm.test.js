@@ -51,4 +51,21 @@ describe('useStorm hook', () => {
 
     expect(result.current).toEqual({ current: initialState.age });
   });
+
+  test('event storm must subscribe to only specified fragment, even when active is set to false', () => {
+    const initialState = { users: [] };
+    const storm = createStorm(initialState);
+    const finalState = { users: [{ name: 'Bob' }] };
+    const fn = jest.fn();
+
+    renderHook(() => useStorm(storm, (state, subscribe) => {
+      fn();
+      subscribe(state.users);
+    }));
+    act(() => {
+      storm.dispatch(finalState);
+    });
+
+    expect(fn).toBeCalledTimes(2);
+  });
 });
