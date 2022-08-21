@@ -1,3 +1,18 @@
+# [5.0.0](https://github.com/event-storm/react-event-storm/compare/v4.1.0...v5.0.0) (2022-08-21)
+
+
+### Bug Fixes
+
+* **event-storm:** bump fix version - multiple subscriptions issue fixed ([9c47530](https://github.com/event-storm/react-event-storm/commit/9c47530695f0743f8a06d573537cb3514f7fd2ad))
+
+
+### BREAKING CHANGES
+
+* **event-storm:** calling subscription's count inside storm selector has was causing bug becuas of
+order. Now calling any time repeatiting or not, will not rely on order
+
+
+
 # [4.1.0](https://github.com/event-storm/react-event-storm/compare/v4.0.0...v4.1.0) (2022-08-21)
 
 
