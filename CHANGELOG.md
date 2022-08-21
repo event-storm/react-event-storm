@@ -1,3 +1,12 @@
+# [4.1.0](https://github.com/event-storm/react-event-storm/compare/v4.0.0...v4.1.0) (2022-08-21)
+
+
+### Features
+
+* **event-storm:** update major version ([1aadafe](https://github.com/event-storm/react-event-storm/commit/1aadafe1a3ab21bbd43c7156e77d4058f4819888))
+
+
+
 # [4.0.0](https://github.com/event-storm/react-event-storm/compare/v1.2.1...v4.0.0) (2022-08-21)
 
 
