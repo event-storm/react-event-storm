@@ -1,3 +1,12 @@
+## [5.0.1](https://github.com/event-storm/react-event-storm/compare/v5.0.0...v5.0.1) (2022-08-22)
+
+
+### Bug Fixes
+
+* **usestorm:** unsubcribe on component unmount ([a3c04b9](https://github.com/event-storm/react-event-storm/commit/a3c04b9cea1a725a10385de45732c4b8d49369d8))
+
+
+
 # [5.0.0](https://github.com/event-storm/react-event-storm/compare/v4.1.0...v5.0.0) (2022-08-21)
 
 
