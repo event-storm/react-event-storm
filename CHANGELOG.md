@@ -1,3 +1,12 @@
+## [5.0.2](https://github.com/event-storm/react-event-storm/compare/v5.0.1...v5.0.2) (2022-08-22)
+
+
+### Bug Fixes
+
+* **types:** fix the naming and exact typing of subscribe argument ([1c207f5](https://github.com/event-storm/react-event-storm/commit/1c207f5b5b03cea0a6815af4a8002b84de748536))
+
+
+
 ## [5.0.1](https://github.com/event-storm/react-event-storm/compare/v5.0.0...v5.0.1) (2022-08-22)
 
 
