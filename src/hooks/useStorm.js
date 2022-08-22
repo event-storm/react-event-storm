@@ -1,4 +1,4 @@
-import { useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 
 import useForceUpdate from './useForceUpdate';
 
@@ -7,12 +7,18 @@ const takeAll = (state, exact) => exact(state);
 const useStorm = (storm, callback = takeAll, { active = true } = {}) => {
   const forceUpdate = useForceUpdate();
   const resultRef = useRef(null);
+  const activeRef = useRef(active);
+  const subscriptionRef = useRef(null);
+
+  activeRef.current = active;
   useMemo(() => {
-    storm.subscribe((...args) => {
+    subscriptionRef.current = storm.subscribe((...args) => {
       resultRef.current = callback(...args);
-      active && forceUpdate([]);
+      activeRef.current && forceUpdate([]);
     });
   }, []);
+
+  useEffect(() => subscriptionRef.current, []);
 
   return active ? resultRef.current : resultRef;
 };

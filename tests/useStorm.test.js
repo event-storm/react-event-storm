@@ -58,6 +58,27 @@ describe('useStorm hook', () => {
     const finalState = { users: [{ name: 'Bob' }] };
     const fn = jest.fn();
 
+    const { unmount } = renderHook(() => useStorm(storm, (state, subscribe) => {
+      fn();
+      subscribe(state.users);
+    }));
+    act(() => {
+      storm.dispatch(finalState);
+    });
+
+    expect(fn).toBeCalledTimes(2);
+    unmount();
+
+    storm.dispatch({ key: 'value' });
+    expect(fn).toBeCalledTimes(2);
+  });
+
+  test('After unmount the subscriptin must be disposed', () => {
+    const initialState = { users: [] };
+    const storm = createStorm(initialState);
+    const finalState = { users: [{ name: 'Bob' }] };
+    const fn = jest.fn();
+
     renderHook(() => useStorm(storm, (state, subscribe) => {
       fn();
       subscribe(state.users);
