@@ -1,3 +1,12 @@
+## [5.0.3](https://github.com/event-storm/react-event-storm/compare/v5.0.2...v5.0.3) (2022-08-27)
+
+
+### Bug Fixes
+
+* **dependencies:** update event storm peer deps version ([9cae91d](https://github.com/event-storm/react-event-storm/commit/9cae91d1d9e6704f737934ea37a234b467f873f6))
+
+
+
 ## [5.0.2](https://github.com/event-storm/react-event-storm/compare/v5.0.1...v5.0.2) (2022-08-22)
 
 
