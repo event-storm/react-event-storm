@@ -30,7 +30,7 @@
     "url": "https://github.com/event-storm/react-event-storm/issues"
   },
   "peerDependencies": {
-    "event-storm": "^3.0.0",
+    "event-storm": "^5.0.0",
     "react": ">=16.8.0"
   },
   "devDependencies": {
