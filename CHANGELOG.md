@@ -1,3 +1,12 @@
+## [5.0.5](https://github.com/event-storm/react-event-storm/compare/v5.0.4...v5.0.5) (2022-09-15)
+
+
+### Bug Fixes
+
+* **useSubscribe:** active was wrong by type ([eb90f56](https://github.com/event-storm/react-event-storm/commit/eb90f567abe72eee45e7d7bdd8a5d1412881d8a8))
+
+
+
 ## [5.0.4](https://github.com/event-storm/react-event-storm/compare/v5.0.3...v5.0.4) (2022-08-27)
 
 
