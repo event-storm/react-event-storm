@@ -1,6 +1,6 @@
 {
   "name": "react-event-storm",
-  "version": "5.0.5",
+  "version": "5.0.6",
   "description": "React wrapper for event-store library",
   "main": "./index.js",
   "types": "./types/index.d.ts",
