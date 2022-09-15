@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import useForceUpdate from './useForceUpdate';
 
-const useSubscribe = (models, { active = true } = {}) => {
+const useSubscribe = (models, active = true) => {
   const forceUpdate = useForceUpdate();
 
   useEffect(() => {
