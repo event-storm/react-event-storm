@@ -73,7 +73,7 @@ describe('useStorm hook', () => {
     expect(fn).toBeCalledTimes(2);
   });
 
-  test('After unmount the subscriptin must be disposed', () => {
+  test('After unmount the subscription must be disposed', () => {
     const initialState = { users: [] };
     const storm = createStorm(initialState);
     const finalState = { users: [{ name: 'Bob' }] };
@@ -88,5 +88,22 @@ describe('useStorm hook', () => {
     });
 
     expect(fn).toBeCalledTimes(2);
+  });
+
+
+  test('Empting the array', () => {
+    const initialState = { users: [{ name: 'Bob' }] };
+    const storm = createStorm(initialState);
+    const finalState = { users: [] };
+
+    const { result } = renderHook(() => useStorm(storm, (state, subscribe) => subscribe(state.users)));
+
+    expect(JSON.parse(JSON.stringify(result.current))).toEqual(initialState.users);
+
+    act(() => {
+      storm.dispatch(finalState);
+    });
+
+    expect(result.current).toEqual(finalState.users);
   });
 });
