@@ -1,3 +1,12 @@
+## [5.0.6](https://github.com/event-storm/react-event-storm/compare/v5.0.5...v5.0.6) (2022-09-15)
+
+
+### Bug Fixes
+
+* **usesubscribe:** change effect to update ([0201092](https://github.com/event-storm/react-event-storm/commit/02010920d3dd7d071cdc7c54e01bad77c3cb677f))
+
+
+
 ## [5.0.5](https://github.com/event-storm/react-event-storm/compare/v5.0.4...v5.0.5) (2022-09-15)
 
 
