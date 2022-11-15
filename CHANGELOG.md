@@ -1,3 +1,12 @@
+# [5.1.0](https://github.com/event-storm/react-event-storm/compare/v5.0.6...v5.1.0) (2022-11-15)
+
+
+### Features
+
+* **react18:** concurrent mode support ([82c2289](https://github.com/event-storm/react-event-storm/commit/82c22891ad2de9b88d53ed24ae607b900f08bdfe))
+
+
+
 ## [5.0.6](https://github.com/event-storm/react-event-storm/compare/v5.0.5...v5.0.6) (2022-09-15)
 
 
