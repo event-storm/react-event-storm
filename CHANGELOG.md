@@ -1,3 +1,12 @@
+## [5.1.1](https://github.com/event-storm/react-event-storm/compare/v5.1.0...v5.1.1) (2024-01-10)
+
+
+### Bug Fixes
+
+* **usestorm:** fix the useStorm subscription with syncExternal store ([9c9f514](https://github.com/event-storm/react-event-storm/commit/9c9f51465a07cc742b58316ae0cb04525bc570e8))
+
+
+
 # [5.1.0](https://github.com/event-storm/react-event-storm/compare/v5.0.6...v5.1.0) (2022-11-15)
 
 
