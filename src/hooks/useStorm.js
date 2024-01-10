@@ -1,24 +1,38 @@
-import { useEffect, useMemo, useRef } from 'react';
-
-import useForceUpdate from './useForceUpdate';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { useSyncExternalStoreWithSelector } from 'use-sync-external-store/with-selector';
 
 const takeAll = (state, exact) => exact(state);
+const mirror = _ => _;
 
 const useStorm = (storm, callback = takeAll, { active = true } = {}) => {
-  const forceUpdate = useForceUpdate();
   const resultRef = useRef(null);
   const activeRef = useRef(active);
   const subscriptionRef = useRef(null);
 
+  const fakeSubscription = useCallback(() => {
+  }, []);
+  const fakeIsEqual = useCallback(() => {
+    return !activeRef.current;
+  }, []);
+  const fakeState = useCallback(() => resultRef.current, []);
+  
   activeRef.current = active;
   useMemo(() => {
     subscriptionRef.current = storm.subscribe((...args) => {
       resultRef.current = callback(...args);
-      activeRef.current && forceUpdate([]);
+      fakeSubscription();
     });
   }, []);
-
+  
   useEffect(() => subscriptionRef.current, []);
+
+  useSyncExternalStoreWithSelector(
+    storm.subscribe,
+    fakeState,
+    null,
+    mirror,
+    fakeIsEqual,
+  );
 
   return active ? resultRef.current : resultRef;
 };
