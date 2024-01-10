@@ -1,3 +1,12 @@
+## [5.1.3](https://github.com/event-storm/react-event-storm/compare/v5.1.2...v5.1.3) (2024-01-10)
+
+
+### Bug Fixes
+
+* **utils:** move noop to fakesubscription ([38241ce](https://github.com/event-storm/react-event-storm/commit/38241ceb2853bdfb627b946150a118a405cf70ae))
+
+
+
 ## [5.1.2](https://github.com/event-storm/react-event-storm/compare/v5.1.1...v5.1.2) (2024-01-10)
 
 
