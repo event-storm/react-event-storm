@@ -1,16 +1,16 @@
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useSyncExternalStoreWithSelector } from 'use-sync-external-store/with-selector';
+import { mirror } from '../utils';
+import useFakeSubscription from './useFakeSubscription';
 
 const takeAll = (state, exact) => exact(state);
-const mirror = _ => _;
 
 const useStorm = (storm, callback = takeAll, { active = true } = {}) => {
   const resultRef = useRef(null);
   const activeRef = useRef(active);
   const subscriptionRef = useRef(null);
+  const { fakeSubscriptionRef, fakeSubscription } = useFakeSubscription();
 
-  const fakeSubscription = useCallback(() => {
-  }, []);
   const fakeIsEqual = useCallback(() => {
     return !activeRef.current;
   }, []);
@@ -20,14 +20,14 @@ const useStorm = (storm, callback = takeAll, { active = true } = {}) => {
   useMemo(() => {
     subscriptionRef.current = storm.subscribe((...args) => {
       resultRef.current = callback(...args);
-      fakeSubscription();
+      fakeSubscriptionRef.current();
     });
   }, []);
   
   useEffect(() => subscriptionRef.current, []);
 
   useSyncExternalStoreWithSelector(
-    storm.subscribe,
+    fakeSubscription,
     fakeState,
     null,
     mirror,
