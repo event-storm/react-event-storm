@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useSyncExternalStoreWithSelector } from 'use-sync-external-store/with-selector';
-import { mirror } from '../utils';
 import useFakeSubscription from './useFakeSubscription';
 
 const takeAll = (state, exact) => exact(state);
+const mirror = _ => _;
 
 const useStorm = (storm, callback = takeAll, { active = true } = {}) => {
   const resultRef = useRef(null);
