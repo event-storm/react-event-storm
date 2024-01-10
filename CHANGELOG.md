@@ -1,3 +1,12 @@
+## [5.1.2](https://github.com/event-storm/react-event-storm/compare/v5.1.1...v5.1.2) (2024-01-10)
+
+
+### Bug Fixes
+
+* **wrong import:** move the mirror inside storm file ([25d78aa](https://github.com/event-storm/react-event-storm/commit/25d78aaa3316882fbd177af15fa0d29deb15a6ad))
+
+
+
 ## [5.1.1](https://github.com/event-storm/react-event-storm/compare/v5.1.0...v5.1.1) (2024-01-10)
 
 
