@@ -44,9 +44,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
-          message: ${{ steps.changelog.outputs.tag }}
-          release_name: ${{ steps.changelog.outputs.tag }}
-          body: ${{ steps.changelog.outputs.clean_changelog }}
+          title: ${{ steps.changelog.outputs.tag }}
       - name: Rollback release
         if: failure() && steps.changelog.outputs.id != ''
         uses: author/action-rollback@stable
