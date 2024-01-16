@@ -74,7 +74,5 @@
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   },
-  "dependencies": {
-    "use-sync-external-store": "^1.2.0"
-  }
+  "dependencies": {}
 }
