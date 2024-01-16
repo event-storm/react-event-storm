@@ -1,3 +1,12 @@
+## [5.1.7](https://github.com/event-storm/react-event-storm/compare/v5.1.6...v5.1.7) (2024-01-16)
+
+
+### Bug Fixes
+
+* **hooks:** react 18 support ([859df86](https://github.com/event-storm/react-event-storm/commit/859df86b5295102ccdf9eedf419125d686007082))
+
+
+
 ## [5.1.6](https://github.com/event-storm/react-event-storm/compare/v5.1.5...v5.1.6) (2024-01-10)
 
 
