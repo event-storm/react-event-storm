@@ -31,7 +31,7 @@
   },
   "peerDependencies": {
     "event-storm": "^5.0.17",
-    "react": ">=16.8.0"
+    "react": ">=18.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
