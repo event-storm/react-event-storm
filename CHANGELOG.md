@@ -1,3 +1,13 @@
+## [5.1.8](https://github.com/event-storm/react-event-storm/compare/v5.1.7...v5.1.8) (2025-09-26)
+
+
+### Bug Fixes
+
+* **deps:** react version must be 18 cause useSyncExternalStore is used ([4851046](https://github.com/event-storm/react-event-storm/commit/4851046e37e42e38ca8c956ecaa31e2a6fe37d03))
+* **deps:** update event storm version ([ee4f372](https://github.com/event-storm/react-event-storm/commit/ee4f3722da813acdcb1260923e0ad77495c5765a))
+
+
+
 ## [5.1.7](https://github.com/event-storm/react-event-storm/compare/v5.1.6...v5.1.7) (2024-01-16)
 
 
