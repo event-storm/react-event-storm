@@ -6,16 +6,18 @@ on:
     paths:
       - 'src/*.js'
       - 'types/*.d.ts'
+      - 'package.json'
+      - '.github/workflows/publish.yml'
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout to repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Use NodeJS
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
-          node-version: '14.x'
+          node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
       - name: Install dependencies
         run: yarn install --frozen-lockfile
@@ -23,12 +25,12 @@ jobs:
         run: yarn run lint
       - name: Testing
         run: yarn run jest --collectCoverage
-      - uses: codecov/codecov-action@v3
+      - uses: codecov/codecov-action@v5
         with:
           directory: ./coverage
       - name: Generate changelog
         id: changelog
-        uses: TriPSs/conventional-changelog-action@v2
+        uses: TriPSs/conventional-changelog-action@v5
         with:
           github-token: ${{ secrets.RELEASE_TOKEN }}
           git-message: 'chore(release): {version}'
