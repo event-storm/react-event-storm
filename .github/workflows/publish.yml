@@ -24,10 +24,7 @@ jobs:
       - name: Linting
         run: yarn run lint
       - name: Testing
-        run: yarn run jest --collectCoverage
-      - uses: codecov/codecov-action@v5
-        with:
-          directory: ./coverage
+        run: yarn run jest
       - name: Generate changelog
         id: changelog
         uses: TriPSs/conventional-changelog-action@v5
