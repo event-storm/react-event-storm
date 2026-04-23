@@ -1,3 +1,12 @@
+## [5.1.9](https://github.com/event-storm/react-event-storm/compare/v5.1.8...v5.1.9) (2026-04-23)
+
+
+### Bug Fixes
+
+* **types:** storm FragmentSubscribe must return correct types, when picking ([cb01bd3](https://github.com/event-storm/react-event-storm/commit/cb01bd353c50807a102c3e81477124b5f993af42))
+
+
+
 ## [5.1.8](https://github.com/event-storm/react-event-storm/compare/v5.1.7...v5.1.8) (2025-09-26)
 
 
