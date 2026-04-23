@@ -10,7 +10,7 @@
     "lint": "eslint src/*.js",
     "test:watch": "jest --watch",
     "build": "rimraf ./dist && yarn run bundle",
-    "publish-lib": "yarn run build && cd dist && yarn publish"
+    "publish-lib": "yarn run build && cd dist && npm publish"
   },
   "keywords": [
     "hooks",
