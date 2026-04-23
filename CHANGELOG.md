@@ -1,3 +1,12 @@
+## [5.1.10](https://github.com/event-storm/react-event-storm/compare/v5.1.9...v5.1.10) (2026-04-23)
+
+
+### Bug Fixes
+
+* **deployment:** publish via npm ([60ba286](https://github.com/event-storm/react-event-storm/commit/60ba28645daa3f5b8958110e1169b3ed904db485))
+
+
+
 ## [5.1.9](https://github.com/event-storm/react-event-storm/compare/v5.1.8...v5.1.9) (2026-04-23)
 
 
