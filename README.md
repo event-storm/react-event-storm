@@ -38,6 +38,30 @@ function Component() {
 }
 ```
 
+### Models
+
+A model holds a value replaced whole. `useModel` reads one model, through an optional selector, and redraws only
+when the selected value changes; `useModels` reads several models whole.
+
+```typescript
+import { createModel } from 'event-storm';
+import { useModel, useModels } from 'react-event-storm';
+
+const personModel = createModel({ name: 'Ann', age: 1 });
+const themeModel = createModel('dark');
+
+function Name() {
+  // Not redrawn when only the age changes.
+  const name = useModel(personModel, person => person.name);
+  return <span>{name}</span>
+}
+
+function Card() {
+  const [person, theme] = useModels([personModel, themeModel]);
+  return <span className={theme}>{person.name}, {person.age}</span>
+}
+```
+
 ### See it in action
 
 Examples:
