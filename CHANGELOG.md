@@ -1,3 +1,17 @@
+# [5.2.0](https://github.com/event-storm/react-event-storm/compare/v5.1.10...v5.2.0) (2026-11-15)
+
+
+### Bug Fixes
+
+* **ci:** publish on Node 24 instead of upgrading npm on Node 20 ([04160f0](https://github.com/event-storm/react-event-storm/commit/04160f05cfad7c491abd18810cec9897b725bcac))
+
+
+### Features
+
+* **useModels:** release subscriptions on unmount and add useModel with a selector ([1b3035f](https://github.com/event-storm/react-event-storm/commit/1b3035ff4dec525b6fa327bd2bd257f7533a5304))
+
+
+
 ## [5.1.10](https://github.com/event-storm/react-event-storm/compare/v5.1.9...v5.1.10) (2026-04-23)
 
 
